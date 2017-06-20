@@ -1,5 +1,5 @@
 project(mysimpleproject)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5.2)
 # C++14 because we're "edgy"
 set(CMAKE_CXX_STANDARD 14)
 
@@ -22,6 +22,11 @@ include_directories(${CONAN_INCLUDE_DIRS})
 add_library(mysimpleprojectlib STATIC ${PROJECT_SOURCE})
 add_executable(mysimpleproject ${PROJECT_MAIN})
 target_link_libraries(mysimpleproject mysimpleprojectlib ${CONAN_LIBS})
+
+add_custom_command(TARGET mysimpleproject POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${PROJECT_SOURCE_DIR}/shaders/"
+        $<TARGET_FILE_DIR:mysimpleproject>)
 
 # Now enable our tests
 enable_testing()

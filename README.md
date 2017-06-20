@@ -2,24 +2,28 @@
 
 ## Setup and configure
 
-```
+```bash
 brew install conan
-cd build
-# TODO - trying to find one that works...
+mkdir build && cd build
+conan install .. -s compiler=apple-clang -s compiler.version=8.1 -s compiler.libcxx=libc++ --build=missing
+cmake ..
+cmake --build .
 
-# THIS SEEMED TO WORK:
-# conan install .. -s compiler=apple-clang -s compiler.version=8.1 -s compiler.libcxx=libc++ --build=missing
-
-# Alternatives
-# conan install .. -s compiler=clang -s compiler.version=3.6 -s compiler.libcxx=libstdc++ --build=missing
-# conan install -s compiler=gcc -s compiler.version=5.3 -s compiler.libcxx=libstdc++11 --build=missing
 
 # TO test:
 ctest -V
 ```
 
+## Alternatives
+
+```
+conan install .. -s compiler=clang -s compiler.version=3.6 -s compiler.libcxx=libstdc++ --build=missing
+conan install -s compiler=gcc -s compiler.version=5.3 -s compiler.libcxx=libstdc++11 --build=missing
+```
+
 Base example drawn from multiple sources online:
 
+* [A Timer using POCO libraries](http://docs.conan.io/en/latest/getting_started.html#a-timer-using-poco-libraries)
 * [Learning Poco GET with HTTP](https://www.codeproject.com/Articles/252566/Learning-Poco-GET-with-HTTP)
 * [Backward Stack Trace Library](https://github.com/bombela/backward-cpp)
 * [Conan: C++ Package manager](https://www.conan.io/)
