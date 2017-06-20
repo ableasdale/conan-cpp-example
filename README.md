@@ -14,6 +14,8 @@ cmake --build .
 ctest -V
 ```
 
+Note that there is now an `init.sh` file that I'm using for quick testing
+
 ## Alternatives
 
 ```
@@ -23,6 +25,7 @@ conan install -s compiler=gcc -s compiler.version=5.3 -s compiler.libcxx=libstdc
 
 Base example drawn from multiple sources online:
 
+* [MS C++ ReST SDK](https://github.com/Microsoft/cpprestsdk)
 * [A Timer using POCO libraries](http://docs.conan.io/en/latest/getting_started.html#a-timer-using-poco-libraries)
 * [Learning Poco GET with HTTP](https://www.codeproject.com/Articles/252566/Learning-Poco-GET-with-HTTP)
 * [Backward Stack Trace Library](https://github.com/bombela/backward-cpp)
